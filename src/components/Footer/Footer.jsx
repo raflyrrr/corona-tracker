@@ -1,11 +1,14 @@
 import React from "react";
+import styles from './Footer.module.css'
 
-export const Footer = () => {
+const Footer = () => {
   return (
-    <footer>
+    <footer className={styles.Footer}> 
+      Landscape for Best view
       <hr />
+      <br/>
       <div>
-        Made with <i class="far fa-heart"></i> By Rafli Ramadhan
+        Made with <i class="fas fa-heart"></i> By Rafli Ramadhan
       </div>
     </footer>
   );
