@@ -5,7 +5,7 @@ export const Footer = () => {
     <footer>
       <hr />
       <div>
-        Copyright <i class="far fa-copyright"></i> By Rafli Ramadhan
+        Made with <i class="far fa-heart"></i> By Rafli Ramadhan
       </div>
     </footer>
   );
