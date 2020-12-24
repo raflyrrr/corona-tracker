@@ -1,4 +1,14 @@
-.formControl{
-    widows: 30%;
-    margin-bottom: 30px !important;
+.FormControl{
+    width: 30%;
+    margin-bottom: 20px !important;
+    margin-top: 30px !important;
+}
+@media (max-width:770px){
+    .FormControl{
+        width: 100%;
+        margin-bottom: 0 !important;
+
+    }
+    
+    
 }
