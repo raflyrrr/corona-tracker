@@ -1,0 +1,120 @@
+@media (min-width:1024px){
+.table-data {
+  width: 1050px;
+  margin-bottom: 10%;
+  margin-top: 80px;
+}
+}
+
+table tbody {
+  max-height: 400px;
+  overflow-y: auto;
+  width: 100%;
+}
+table thead,
+table tbody,
+table tr,
+table td,
+table th {
+  display: block;
+}
+table tbody td,
+table tbody th,
+table thead > tr > th {
+  float: left;
+  position: relative;
+}
+table > thead > tr > th ::after {
+  content: "";
+  clear: both;
+  display: block;
+}
+
+
+@media (min-width:320px) and (max-width:480px){
+  .table-data {
+    max-width: 250px;
+    margin-bottom: 10%;
+    margin-top: -20px;
+    
+  }
+  table tbody {
+    max-height: 400px;
+    overflow-y: auto;
+    width: 100%;
+  }
+  table tr,
+  table td,
+  table th {
+    display: flex;
+  }
+  table tbody td,
+  table tbody th,
+  table thead > tr > th {
+    float: left;
+    position: relative;
+  }
+  table > thead > tr > th ::after {
+    content: "";
+    clear: both;
+    display: block;
+  }
+}
+@media (min-width:480px) and (max-width:768px){
+  .table-data {
+    max-width: 450px;
+    margin-bottom: 10%;
+    margin-top: -20px;
+  }
+  table tbody {
+    max-height: 400px;
+    overflow-y: auto;
+    width: 100%;
+  }
+  table tr,
+  table td,
+  table th {
+    display: flex;
+  }
+  table tbody td,
+  table tbody th,
+  table thead > tr > th {
+    float: left;
+    position: relative;
+  }
+  table > thead > tr > th ::after {
+    content: "";
+    clear: both;
+    display: block;
+  }
+}
+@media (min-width:769px) and (max-width:1024px){
+  .table-data {
+    max-width: 800px;
+    margin-bottom: 10%;
+    margin-top: 80px;
+  }
+  table tbody {
+    max-height: 400px;
+    overflow-y: auto;
+    width: 100%;
+  }
+  table tr,
+  table td,
+  table th {
+    display: flex;
+  }
+  table tbody td,
+  table tbody th,
+  table thead > tr > th {
+    float: left;
+    position: relative;
+  }
+  table > thead > tr > th ::after {
+    content: "";
+    clear: both;
+    display: block;
+  }
+}
+
+

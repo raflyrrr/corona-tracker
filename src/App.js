@@ -1,43 +1,20 @@
-import React from "react";
+import React from 'react'
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Home from './pages/Home'
+import Hotline from './pages/Hotline'
+import "bootstrap/dist/css/bootstrap.min.css";
 
-import {Cards, Chart, CountryPicker} from './components';
-import styles from "./App.module.css";
-import {fetchData} from './api';
-
-import coronaImage from './images/covid.png'
-import Footer from "./components/Footer/Footer";
-
-class App extends React.Component {
-
-  state={
-    data: {},
-    country:'',
-  }
-
-  async componentDidMount(){
-    const fetchedData = await fetchData();
-
-    this.setState({data:fetchedData});
-  }
-
-  handleCountryChange = async(country)=>{
-    const fetchedData = await fetchData(country);
-
-    this.setState({data:fetchedData,country:country});
-  }
-
-  render(){
-    const {data,country} = this.state
-    return(
-      <div className={styles.container}>
-        <img className={styles.image} src={coronaImage} alt="Covid-19"/>
-        <CountryPicker handleCountryChange={this.handleCountryChange}/>
-        <Cards data={data}/>
-        <Chart data={data} country={country}/>
-        <Footer/>
+function App() {
+  return (
+    <Router>
+      <div className="App">
+        <Switch>
+          <Route exact path="/" component={Home}></Route>
+          <Route exact path="/hotline" component={Hotline}></Route>
+        </Switch>
       </div>
-    )
-  }
+    </Router>
+  )
 }
 
-export default App;
+export default App
