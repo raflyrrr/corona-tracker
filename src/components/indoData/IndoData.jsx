@@ -1,10 +1,18 @@
 import React, { useState, useEffect } from "react";
 import './IndoData.css'
 import CountUp from "react-countup";
+import PulseLoader from "react-spinners/PulseLoader";
+import { css } from "@emotion/react";
 import axios from 'axios'
 
 function IndoData() {
     const [dataAPI, setDataAPI] = useState([]);
+    const [loading, setLoading] = useState (false)
+    const override = css`
+    display:block;
+    padding:5%;
+    text-align:center;
+  `;
   useEffect(() => {
     axios
       .get(
@@ -12,8 +20,12 @@ function IndoData() {
       )
       .then((res) => {
         setDataAPI(res.data);
+        setLoading(true)
       })
       .catch((error) => console.log(error));
+      setTimeout(() => {
+        setLoading(false);
+      }, 500);
   }, []);
   console.log(dataAPI)
   return (
@@ -34,8 +46,8 @@ function IndoData() {
                                     </tr>
                                 </thead>                                
                                 <tbody>
-                                   {dataAPI.map((data,index)=>{
-                                       return(
+                                  {loading ? <div>{dataAPI.map((data,index)=>{
+                                       return(                       
                                         <tr key={data.attributes.FID}>
                                         <th scope="row" className="col- col-lg-2" key={data.attributes.FID}>{index + 1}</th>
                                         <td className="col- col-lg-4">{data.attributes.Provinsi}</td>
@@ -44,7 +56,14 @@ function IndoData() {
                                         <td className="col- col-lg-2 text-center"><CountUp start={0} end={data.attributes.Kasus_Meni} duration={2.5}separator=","/></td>
                                     </tr>
                                        )
-                                   })}
+                                   })}</div> : 
+                                   <PulseLoader
+                                    color={"#00b7ff;"}
+                                    css={override}
+                                    Loading={loading}
+                                    size={20}
+                                  /> }
+                                   
                                 </tbody>
                             </table>
                         </div>
