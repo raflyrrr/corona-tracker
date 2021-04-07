@@ -8,11 +8,10 @@ function IndoData() {
   useEffect(() => {
     axios
       .get(
-        "https://api.kawalcorona.com/indonesia/provinsi"
+        "https://cors-anywhere.herokuapp.com/https://api.kawalcorona.com/indonesia/provinsi"
       )
       .then((res) => {
         setDataAPI(res.data);
-        
       })
       .catch((error) => console.log(error));
   }, []);

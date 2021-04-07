@@ -22,7 +22,7 @@ function Navbar() {
         Covices     
       </a>
       <input type="checkbox" className="menu-btn" id="menu-btn" />
-      <label for="menu-btn" className="menu-icon">
+      <label htmlFor="menu-btn" className="menu-icon">
         <span className="nav-icon"></span>
       </label>
       <ul className="menu">
