@@ -12,6 +12,9 @@ function IndoData() {
     display:block;
     padding:5%;
     text-align:center;
+    @media (max-width:720px){
+      text-align:left;
+    }
   `;
   useEffect(() => {
     axios
