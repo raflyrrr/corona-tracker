@@ -1,9 +1,5 @@
-@media (min-width:1024px){
-.table-data {
-  width: 1050px;
-  margin-bottom: 10%;
+.table-data{
   margin-top: 80px;
-}
 }
 
 table tbody {
@@ -30,19 +26,18 @@ table > thead > tr > th ::after {
   display: block;
 }
 
-
-@media (min-width:320px) and (max-width:480px){
+@media (max-width: 320px) {
   .table-data {
     max-width: 250px;
     margin-bottom: 10%;
     margin-top: -20px;
-    
   }
   table tbody {
     max-height: 400px;
     overflow-y: auto;
     width: 100%;
   }
+
   table tr,
   table td,
   table th {
@@ -60,9 +55,10 @@ table > thead > tr > th ::after {
     display: block;
   }
 }
-@media (min-width:480px) and (max-width:768px){
+
+@media (min-width: 320px) and (max-width: 450px) {
   .table-data {
-    max-width: 450px;
+    max-width: 250px;
     margin-bottom: 10%;
     margin-top: -20px;
   }
@@ -71,6 +67,7 @@ table > thead > tr > th ::after {
     overflow-y: auto;
     width: 100%;
   }
+
   table tr,
   table td,
   table th {
@@ -88,11 +85,46 @@ table > thead > tr > th ::after {
     display: block;
   }
 }
-@media (min-width:769px) and (max-width:1024px){
+@media (max-width: 768px) {
   .table-data {
-    max-width: 800px;
+    margin-bottom: 10%;
+    margin-top: -20px;
+  }
+  table tbody {
+    max-height: 400px;
+    overflow-y: auto;
+    width: 100%;
+  }
+
+  table tr,
+  table td,
+  table th {
+    display: flex;
+  }
+  table tbody td,
+  table tbody th,
+  table thead > tr > th {
+    float: left;
+    position: relative;
+  }
+  table > thead > tr > th ::after {
+    content: "";
+    clear: both;
+    display: block;
+  }
+}
+
+@media (min-width: 1100px) {
+  .table-data {
+    width: 1000px;
     margin-bottom: 10%;
     margin-top: 80px;
+  }
+}
+
+@media (max-width: 1100px) {
+  .table-data {
+    margin-bottom: 10%;
   }
   table tbody {
     max-height: 400px;
@@ -116,5 +148,3 @@ table > thead > tr > th ::after {
     display: block;
   }
 }
-
-

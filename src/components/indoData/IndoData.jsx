@@ -32,7 +32,6 @@ function IndoData() {
   }, []);
   console.log(dataAPI)
   return (
-    <div>
        <div className="table-data">
                 <h2 className="text-center text-capitalize mb-4">Daftar kasus virus corona di provinsi indonesia</h2>
                 <div className="row mb-5">
@@ -73,7 +72,6 @@ function IndoData() {
                     </div>
                 </div>
             </div>
-    </div>
   );
 }
 
