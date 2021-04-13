@@ -10,7 +10,9 @@ function Hoax() {
 
   useEffect(() => {
     axios
-      .get("https://cors-anywhere.herokuapp.com/https://dekontaminasi.com/api/id/covid19/hoaxes")
+      .get(
+        "https://cors-anywhere.herokuapp.com/https://dekontaminasi.com/api/id/covid19/hoaxes"
+      )
       .then((res) => {
         setInfo(res.data);
       })
@@ -33,15 +35,12 @@ function Hoax() {
                       height: "180px",
                       marginBottom: "20px",
                       boxShadow: "2px 4px 8px #9E9E9E",
-                      
                     }}
                     className={styles.hoaxcards}
                   >
                     <Card.Body>
-                      <Card.Text>
-                        {hoax.title}
-                        <a href={hoax.url} class="stretched-link"></a>
-                      </Card.Text>
+                      <Card.Text>{hoax.title}</Card.Text>
+                      <a href={hoax.url} class="stretched-link"><span></span></a>
                     </Card.Body>
                   </Card>
                 </Col>
@@ -50,7 +49,7 @@ function Hoax() {
           </Row>
         </div>
       </Container>
-      <Footer/>
+      <Footer />
     </div>
   );
 }
