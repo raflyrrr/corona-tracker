@@ -1,7 +1,7 @@
 import React from 'react'
-import { Cards, Chart, CountryPicker,Footer,Navbar,Header, IndoData } from "../components";
+import { Cards, Chart, CountryPicker,Footer,Navbar,Header, IndoData,VaksinIndo } from "../components";
 import styles from "../App.module.css"
-import { fetchData } from "../api";
+import { fetchData,fetchDataVaksin } from "../api";
 
 import "../main.css"
 import { Container } from "react-bootstrap";
@@ -10,13 +10,16 @@ import { Container } from "react-bootstrap";
 class Home extends React.Component {
     state = {
       data: {},
+      dataVaksin:{},
       country: "",
     };
   
     async componentDidMount() {
       const fetchedData = await fetchData();
-  
+      const fetchedDataVaksin  = await fetchDataVaksin()
       this.setState({ data: fetchedData });
+      this.setState({ dataVaksin: fetchedDataVaksin})
+      console.log(fetchedDataVaksin)
     }
   
     handleCountryChange = async (country) => {
@@ -26,7 +29,7 @@ class Home extends React.Component {
     };
   
     render() {
-      const { data, country } = this.state;
+      const { data, country, dataVaksin } = this.state;
       return (
         <div className={styles.container}>
           <Navbar />
@@ -36,6 +39,7 @@ class Home extends React.Component {
           <Container>
             <Chart data={data} country={country} />
           </Container>
+          <VaksinIndo data={dataVaksin}/>
           <IndoData/>
           <Footer />
         </div>

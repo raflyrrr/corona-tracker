@@ -2,6 +2,7 @@ import axios from "axios";
 import CountryPicker from "../components/CountryPicker/CountryPicker";
 
 const url = "https://covid19.mathdro.id/api";
+const vaksinUrl = "https://vaksincovid19-api.vercel.app/api/vaksin"
 
 export const fetchData = async (country) => {
   let changeableUrl = url;
@@ -19,6 +20,21 @@ export const fetchData = async (country) => {
       recovered,
       deaths,
       lastUpdate,
+    };
+  } catch (error) {
+    console.log(error)
+  }
+};
+export const fetchDataVaksin = async () => {
+  try {
+    const {
+      data  : { totalsasaran,vaksinasi1,vaksinasi2,lastUpdate },
+    } = await axios.get(vaksinUrl);
+    return {
+      totalsasaran,
+      vaksinasi1,
+      vaksinasi2,
+      lastUpdate
     };
   } catch (error) {
     console.log(error)

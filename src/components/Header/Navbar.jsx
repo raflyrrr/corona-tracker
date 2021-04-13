@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { IoHome } from "react-icons/io5";
 import {HiOutlinePhone} from 'react-icons/hi'
+import {CgDanger} from 'react-icons/cg'
 import {Link} from 'react-router-dom'
 import './Navbar.css'
 
@@ -27,10 +28,13 @@ function Navbar() {
       </label>
       <ul className="menu">
         <li>
-        <Link to="/" className="active"><IoHome style={{fontSize:"20px",margin:"10px 0px",marginRight:"5px"}}></IoHome>Home</Link>
+        <Link to="/"><IoHome style={{fontSize:"20px",margin:"10px 0px",marginRight:"5px"}}></IoHome>Home</Link>
         </li>
         <li>
           <Link to="/hotline"><HiOutlinePhone style={{fontSize:"20px",margin:"10px 0px",marginRight:"5px"}}></HiOutlinePhone>Hotline</Link>
+        </li>
+        <li>
+          <Link to="/hoax" className="active" style={{backgroundColor:'red'}}><CgDanger style={{fontSize:"20px",margin:"10px 0px",marginRight:"5px"}}></CgDanger>Hoax Buster</Link>
         </li>
       </ul>
     </nav>

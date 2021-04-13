@@ -78,7 +78,7 @@ const Hotline = () => {
             width:"14rem",
             boxShadow: "2px 4px 8px #9E9E9E",
             margin: "10px",
-            marginBottom: "20px",
+            marginBottom: "30px",
             height:"10rem",
           }}
         >

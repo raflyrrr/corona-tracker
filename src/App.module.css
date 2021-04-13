@@ -20,6 +20,12 @@ body {
   margin-bottom: 6rem;
 }
 
+.hoaxcards:hover{
+  background-color: rgb(243, 243, 243);
+  transition: 0.2s;
+  font-weight: bold;
+}
+
 .call{
   margin-top: 15px;
   font-weight: 350;
