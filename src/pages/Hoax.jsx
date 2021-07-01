@@ -1,57 +1,46 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Navbar, Header, Footer } from "../components";
-import { Card, Col, Row, Container } from "react-bootstrap";
+import { PulseLoader } from "react-spinners";
+import { Navbar, Header, Footer, HoaxCards, Pagination } from "../components";
+import { Container } from "react-bootstrap";
 import styles from "../App.module.css";
 import "../main.css";
 
-function Hoax() {
+const Hoax = () => {
   const [info, setInfo] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [infoPerPage] = useState(12);
 
   useEffect(() => {
-    axios
-      .get(
-        "https://cors-anywhere.herokuapp.com/https://dekontaminasi.com/api/id/covid19/hoaxes"
-      )
-      .then((res) => {
-        setInfo(res.data);
-      })
-      .catch((error) => console.log(error));
+    const fetchInfo = async () => {
+      const res = await axios.get(`/api/id/covid19/hoaxes`);
+      setInfo(res.data);
+      setIsLoading(false);
+    };
+    fetchInfo();
   }, []);
-  console.log(info);
 
+  const indexOfLastInfo = currentPage * infoPerPage;
+  const indexOfFirstInfo = indexOfLastInfo - infoPerPage;
+  const currentInfo = info.slice(indexOfFirstInfo, indexOfLastInfo);
+
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
   return (
     <div className={styles.container}>
       <Navbar />
       <Header text="Hoax Buster Tentang COVID-19" />
       <Container>
-        <div className={styles.hotline}>
-          <Row>
-            {info.map((hoax) => {
-              return (
-                <Col lg={3} md={6} sm={6} xs={12}>
-                  <Card
-                    style={{
-                      height: "180px",
-                      marginBottom: "20px",
-                      boxShadow: "2px 4px 8px #9E9E9E",
-                    }}
-                    className={styles.hoaxcards}
-                  >
-                    <Card.Body>
-                      <Card.Text>{hoax.title}</Card.Text>
-                      <a href={hoax.url} class="stretched-link"><span></span></a>
-                    </Card.Body>
-                  </Card>
-                </Col>
-              );
-            })}
-          </Row>
-        </div>
+        {isLoading ? <PulseLoader loading = {isLoading} color="#00b7ff;" /> : <HoaxCards info={currentInfo} />}
+        <Pagination
+          infoPerPage={infoPerPage}
+          totalInfo={info.length}
+          paginate={paginate}
+        />
       </Container>
       <Footer />
     </div>
   );
-}
+};
 
 export default Hoax;

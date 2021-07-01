@@ -1,5 +1,5 @@
 import React from "react";
-import { Navbar, Header, Footer } from "../components";
+import { Navbar, Header, Footer,Hospital } from "../components";
 import styles from "../App.module.css";
 import { Card, Row, Col, Container } from "react-bootstrap";
 import "../main.css";
@@ -70,7 +70,7 @@ const Hotline = () => {
 
   const renderCard = (card, index) => {
     return (
-      <Col lg={3} md={6} sm={6} xs={12}>
+      <Col lg={3} md={6} sm={6} xs={12} key={index}>
         <div className={styles.container}>
         <Card
           key={index}
@@ -85,7 +85,7 @@ const Hotline = () => {
           <Card.Img variant="top" src={card.image} style={{padding:"5px 86px 0px"}} />
           <Card.Body>
             <Card.Title style={{ textAlign: "center",marginBottom:"2px",marginTop:"-8px" }}>
-              {card.title}
+              <a href={'tel:'+card.title} className={styles.telptext}>{card.title}</a>
             </Card.Title>
             <Card.Text style={{ textAlign: "center",fontSize:"14px" }}>{card.text}</Card.Text>
           </Card.Body>
@@ -96,7 +96,7 @@ const Hotline = () => {
   };
   return (
     <div className={styles.container}>
-      <Navbar />
+      <Navbar classHotline="nav-active" />
       <Header text="Hotline Coronavirus di Indonesia" />
       <h5 className={styles.call}>
         Layanan darurat via telepon yang disediakan oleh Kemenkes dan juga
@@ -105,7 +105,8 @@ const Hotline = () => {
       <Container>
         <div className={styles.hotline}>
           <Row>{hotlineCardData.map(renderCard)}</Row>
-        </div>
+        </div>      
+        <Hospital/>
       </Container>
       <Footer />
     </div>

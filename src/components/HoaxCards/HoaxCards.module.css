@@ -1,0 +1,14 @@
+.hotline {
+    display: flex;
+    margin-top: 4rem;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 6rem;
+  }
+  
+  
+  .hoaxcards:hover{
+    background-color: rgb(243, 243, 243);
+    transition: 0.2s all ease;
+    font-weight: bold;
+  }

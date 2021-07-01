@@ -23,7 +23,7 @@ body {
 
 .hoaxcards:hover{
   background-color: rgb(243, 243, 243);
-  transition: 0.2s;
+  transition: 0.2s all ease;
   font-weight: bold;
 }
 
@@ -36,6 +36,11 @@ body {
 .image {
   width: 370px;
   margin-top: 50px;
+}
+
+.telptext:hover{
+  text-decoration: none;
+  transition: all 0.2s ease;
 }
 
 

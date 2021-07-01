@@ -1,76 +1,67 @@
-import React, { useState, useEffect } from "react";
-import './IndoData.css'
-import CountUp from "react-countup";
+import React, { Component } from "react";
+import "./IndoData.css";
+import axios from "axios";
 import PulseLoader from "react-spinners/PulseLoader";
-import { css } from "@emotion/react";
-import axios from 'axios'
+import "datatables.net-dt/css/jquery.dataTables.css";
+import "datatables.net-bs/css/dataTables.bootstrap.css";
 
-function IndoData() {
-    const [dataAPI, setDataAPI] = useState([]);
-    const [loading, setLoading] = useState (false)
-    const override = css`
-    display:block;
-    padding:5%;
-    text-align:center;
-    @media (max-width:720px){
-      text-align:left;
-    }
-  `;
-  useEffect(() => {
-    axios
-      .get(
-        "https://indonesia-covid-19.mathdro.id/api/provinsi/"
-      )
-      .then((res) => {
-        setDataAPI(res.data.data);
-        setLoading(false)
-      })
-      .catch((error) => console.log(error));
-      setTimeout(() => {
-        setLoading(true);
-      }, 500);
-  }, []);
-  return (
-       <div className="table-data">
-                <h5 className=" text-capitalize mb-4">Daftar kasus virus corona di provinsi indonesia</h5>
-                <div className="row mb-5">
-                    <div className="col-lg col-md mx-auto bg-white rounded shadow">
-                        <div className="table-responsive">
-                            <table className="table table-hover">
-                                <thead>
-                                    <tr>
-                                        <th scope="col" className="col- col-lg-2">No.</th>
-                                        <th scope="col" className="col- col-lg-4">Provinsi</th>
-                                        <th scope="col" className="col- col-lg-2">Kasus Positif</th>
-                                        <th scope="col" className="col- col-lg-2">Kasus Sembuh</th>
-                                        <th scope="col" className="col- col-lg-2">Meninggal</th>
-                                    </tr>
-                                </thead>                                
-                                <tbody>
-                                  {loading ? <>{dataAPI.map((data,index)=>{
-                                       return(                       
-                                        <tr key={data.fid}>
-                                        <th scope="row" className="col- col-lg-2" key={data.fid}>{index + 1}</th>
-                                        <td className="col- col-lg-4">{data.provinsi}</td>
-                                        <td className="col- col-lg-2 text-center"><CountUp start={0} end={data.kasusPosi} duration={2.5}separator=","/></td>
-                                        <td className="col- col-lg-2 text-center"><CountUp start={0} end={data.kasusSemb} duration={2.5}separator=","/></td>
-                                        <td className="col- col-lg-2 text-center"><CountUp start={0} end={data.kasusMeni} duration={2.5}separator=","/></td>
-                                    </tr>
-                                       )
-                                   })} </> : 
-                                   <PulseLoader
-                                    color={"#00b7ff;"}
-                                    css={override}
-                                    Loading={loading}
-                                    size={20}
-                                  /> }                           
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-  );
+const $ = require("jquery");
+$.DataTable = require("datatables.net");
+
+export class IndoData extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      data: [],
+      loading: true,
+    };
+  }
+  async getIndoInfo() {
+    const res = await axios.get(
+      "https://apicovid19indonesia-v2.vercel.app/api/indonesia/provinsi/more"
+    );
+    this.setState({ loading: false, data: res.data});
+  }
+
+  componentDidMount() {
+    this.getIndoInfo().then(() => this.sync());
+  }
+  sync() {
+    this.$el = $(this.el);
+    this.$el.DataTable({
+      data: this.state.data,
+      columns: [
+        { title: "Provinsi", data: "provinsi", },
+        { title: "Jumlah Kasus", data: "kasus",render: $.fn.dataTable.render.number( ',' ) },
+        { title: "Jumlah Dirawat", data: "dirawat",render: $.fn.dataTable.render.number( ',' ) },
+        { title: "Jumlah Sembuh", data: "sembuh",render: $.fn.dataTable.render.number( ',' ) },
+        { title: "Meninggal", data: "meninggal",render: $.fn.dataTable.render.number( ',' ) },
+        { title: "Jenis Kelamin (L)", data: "jenis_kelamin.laki-laki",render: $.fn.dataTable.render.number( ',' ) },
+        { title: "Jenis Kelamin (P)", data: "jenis_kelamin.perempuan",render: $.fn.dataTable.render.number( ',' ) },
+      ],
+    });
+  }
+
+  componentWillUnmount() {
+  }
+
+  render() {
+    const { loading } = this.state;
+    return (
+      <div className="hero-indodata">
+        <h3 style={{ marginBottom: "40px" }}>Data Kasus COVID-19 di Indonesia Berdasarkan Provinsi</h3>
+        {loading ? (
+          <PulseLoader Loading={loading} color={"#00b7ff;"} size={20} />
+        ) : (
+          <table
+            className="tableindodata"
+            width="90%"
+            ref={(el) => (this.el = el)}
+          ></table>
+        )}
+
+        <div className="margin" style={{ marginTop: "8rem" }}></div>
+      </div>
+    );
+  }
 }
-
-export default IndoData;

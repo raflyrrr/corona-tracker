@@ -19,7 +19,6 @@ class Home extends React.Component {
       const fetchedDataVaksin  = await fetchDataVaksin()
       this.setState({ data: fetchedData });
       this.setState({ dataVaksin: fetchedDataVaksin})
-      console.log(fetchedDataVaksin)
     }
   
     handleCountryChange = async (country) => {
@@ -32,7 +31,7 @@ class Home extends React.Component {
       const { data, country, dataVaksin } = this.state;
       return (
         <div className={styles.container}>
-          <Navbar />
+          <Navbar classHome="nav-active" />
           <Header text="Live Data Coronavirus Indonesia & Dunia"/>
           <Cards data={data} />
           <CountryPicker handleCountryChange={this.handleCountryChange} />

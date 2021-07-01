@@ -1,0 +1,18 @@
+.pagination a {
+  padding: 10px 16px;
+  margin-top: -70px;
+}
+.pagination {
+  justify-content: center;
+}
+.pagination a:focus {
+  background-color: #00b7ff;
+  text-decoration: none;
+  outline-style: none;
+  box-shadow: none;
+  border-color: transparent;
+  color: #fff;
+}
+.pagination-hoax{
+  margin-bottom: 80px;
+}

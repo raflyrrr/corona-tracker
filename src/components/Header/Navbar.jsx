@@ -6,7 +6,7 @@ import {Link} from 'react-router-dom'
 import './Navbar.css'
 
 
-function Navbar() {
+function Navbar(props) {
   const [nav, setNav] = useState(false);
   const changeBackground = () => {
     if (window.scrollY >= 50) {
@@ -27,14 +27,14 @@ function Navbar() {
         <span className="nav-icon"></span>
       </label>
       <ul className="menu">
-        <li>
+        <li className={props.classHome}>
         <Link to="/"><IoHome style={{fontSize:"20px",margin:"10px 0px",marginRight:"5px"}}></IoHome>Home</Link>
         </li>
-        <li>
+        <li className={props.classHotline}>
           <Link to="/hotline"><HiOutlinePhone style={{fontSize:"20px",margin:"10px 0px",marginRight:"5px"}}></HiOutlinePhone>Hotline</Link>
         </li>
         <li>
-          <Link to="/hoax" className="active" style={{backgroundColor:'red'}}><CgDanger style={{fontSize:"20px",margin:"10px 0px",marginRight:"5px"}}></CgDanger>Hoax Buster</Link>
+          <Link to="/hoax" className="nav-hoax-active" style={{backgroundColor:'red'}}><CgDanger style={{fontSize:"20px",margin:"10px 0px",marginRight:"5px"}}></CgDanger>Hoax Buster</Link>
         </li>
       </ul>
     </nav>
