@@ -2,17 +2,11 @@
   "posts": [
     {
       "id": 1,
-      "title": "hello"
+      "judul": "hello",
+      "deskripsi" : "hello"
     }
   ],
   "profile": {
     "title": "typicode"
-  },
-  "info": [
-    {
-      "id": 1,
-      "judul": "tes",
-      "deskripsi" : "tes"
-    }
-  ]
+  }
 }
