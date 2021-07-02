@@ -1,7 +1,6 @@
 {
   "name": "corona-tracker",
   "version": "0.1.0",
-  "proxy" : "https://dekontaminasi.com",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.1.5",
@@ -16,7 +15,6 @@
     "datatables.net": "^1.10.25",
     "datatables.net-bs": "^2.1.1",
     "datatables.net-dt": "^1.1.0",
-    "http-proxy-middleware": "^0.20.0",
     "react": "^17.0.1",
     "react-bootstrap": "^1.5.0",
     "react-chartjs-2": "^2.11.1",
