@@ -6,9 +6,6 @@ module.exports = function (app) {
       target: "https://dekontaminasi.com",
       secure: false,
       changeOrigin: true,
-      pathRewrite: {
-        "^/api/id/covid19/hospitals": "/api/id/covid19/hospitals"
-      }
     })
   );
   app.use(
@@ -16,9 +13,6 @@ module.exports = function (app) {
       target: "https://dekontaminasi.com",
       secure: false,
       changeOrigin: true,
-      pathRewrite: {
-        "^/api/id/covid19/hoaxes": "/api/id/covid19/hoaxes"
-      }
     })
   );
 };
