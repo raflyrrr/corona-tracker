@@ -17,7 +17,7 @@ export class Hospital extends Component {
     };
   }
   async getHospitalData() {
-    const res = await axios.get('https://cors.bridged.cc/https://dekontaminasi.com/api/id/covid19/hospitals');
+    const res = await axios.get('https://cors.bridged.c/https://dekontaminasi.com/api/id/covid19/hospitals');
     this.setState({ loading: false, data: res.data });
   }
 

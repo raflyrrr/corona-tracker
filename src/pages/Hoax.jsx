@@ -14,7 +14,7 @@ const Hoax = () => {
 
   useEffect(() => {
     const fetchInfo = async () => {
-      const res = await axios.get('https://cors.bridged.cc/https://dekontaminasi.com/api/id/covid19/hoaxes');
+      const res = await axios.get('https://cors.bridged.c/https://dekontaminasi.com/api/id/covid19/hoaxes');
       setInfo(res.data);
       setIsLoading(false);
     };
