@@ -7,5 +7,12 @@
   ],
   "profile": {
     "title": "typicode"
-  }
+  },
+  "info": [
+    {
+      "id": 1,
+      "judul": "tes",
+      "deskripsi" : "tes"
+    }
+  ]
 }
