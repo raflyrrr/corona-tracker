@@ -1,12 +1,9 @@
 {
-  "posts": [
+  "info": [
     {
       "id": 1,
       "judul": "hello",
       "deskripsi" : "hello"
     }
-  ],
-  "profile": {
-    "title": "typicode"
-  }
+  ]
 }
