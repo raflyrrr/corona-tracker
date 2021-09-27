@@ -1,6 +1,7 @@
 import React from 'react'
 import { Cards, Chart, CountryPicker,Footer,Navbar,Header, IndoData,VaksinIndo } from "../components";
 import styles from "../App.module.css"
+import { PulseLoader } from "react-spinners";
 import { fetchData,fetchDataVaksin } from "../api";
 
 import "../main.css"
@@ -12,13 +13,13 @@ class Home extends React.Component {
       data: {},
       dataVaksin:{},
       country: "",
+      isLoading:true
     };
   
     async componentDidMount() {
       const fetchedData = await fetchData();
       const fetchedDataVaksin  = await fetchDataVaksin()
-      this.setState({ data: fetchedData });
-      this.setState({ dataVaksin: fetchedDataVaksin})
+      this.setState({ data: fetchedData,dataVaksin: fetchedDataVaksin,isLoading:false });
     }
   
     handleCountryChange = async (country) => {
@@ -28,7 +29,7 @@ class Home extends React.Component {
     };
   
     render() {
-      const { data, country, dataVaksin } = this.state;
+      const { data, country, dataVaksin,isLoading } = this.state;
       return (
         <div className={styles.container}>
           <Navbar classHome="nav-active" />
@@ -40,7 +41,7 @@ class Home extends React.Component {
           </Container>
           <VaksinIndo data={dataVaksin}/>
           <IndoData/>
-          <Footer />
+          {isLoading ? <PulseLoader loading = {isLoading} color="#fff;" /> : <Footer />}
         </div>
       );
     }

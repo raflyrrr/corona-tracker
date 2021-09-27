@@ -38,7 +38,7 @@ const Hoax = () => {
           paginate={paginate}
         />
       </Container>
-      <Footer />
+      {isLoading ? <PulseLoader loading = {isLoading} color="#fff;" /> : <Footer />}
     </div>
   );
 };

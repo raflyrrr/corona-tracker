@@ -1,0 +1,13 @@
+.rowstyle{
+    margin-top: 4rem;
+}
+.infotexthover:hover{
+    text-decoration: none;
+}
+.headerjudul{
+    margin-top: 150px;
+}
+.paginationinfo{
+    margin-top: 8% !important;
+    margin-bottom: 10% !important;
+}

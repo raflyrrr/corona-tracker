@@ -1,10 +1,23 @@
-import React from "react";
+import React,{useState,useEffect} from "react";
 import { Navbar, Header, Footer,Hospital } from "../components";
 import styles from "../App.module.css";
 import { Card, Row, Col, Container } from "react-bootstrap";
+import { PulseLoader } from "react-spinners";
+
 import "../main.css";
 
 const Hotline = () => {
+
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    if (isLoading) {
+      setTimeout(() => {
+      setIsLoading(false);
+    }, 500);
+    }
+  },[isLoading])
+
   const hotlineCardData = [
     {
       image: "/assets/images/logo-kemenkes1.png",
@@ -94,6 +107,7 @@ const Hotline = () => {
       </Col>
     );
   };
+
   return (
     <div className={styles.container}>
       <Navbar classHotline="nav-active" />
@@ -108,7 +122,7 @@ const Hotline = () => {
         </div>      
         <Hospital/>
       </Container>
-      <Footer />
+      {isLoading ? <PulseLoader loading = {isLoading} color="#fff;" /> : <Footer />}
     </div>
   );
 };

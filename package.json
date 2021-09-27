@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@ckeditor/ckeditor5-build-classic": "^28.0.0",
+    "@ckeditor/ckeditor5-react": "^3.0.2",
     "@emotion/react": "^11.1.5",
     "@material-ui/core": "^4.11.2",
     "@testing-library/jest-dom": "^5.11.6",
@@ -15,7 +17,9 @@
     "datatables.net": "^1.10.25",
     "datatables.net-bs": "^2.1.1",
     "datatables.net-dt": "^1.1.0",
+    "html-react-parser": "^1.2.7",
     "react": "^17.0.1",
+    "react-app-polyfill": "^2.0.0",
     "react-bootstrap": "^1.5.0",
     "react-chartjs-2": "^2.11.1",
     "react-countup": "^4.3.3",
@@ -24,6 +28,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.1",
     "react-spinners": "^0.10.6",
+    "sweetalert2": "^11.0.18",
     "web-vitals": "^0.2.4"
   },
   "scripts": {

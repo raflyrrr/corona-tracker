@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { IoHome } from "react-icons/io5";
 import {HiOutlinePhone} from 'react-icons/hi'
 import {CgDanger} from 'react-icons/cg'
+import{AiOutlineInfoCircle} from 'react-icons/ai'
 import {Link} from 'react-router-dom'
 import './Navbar.css'
 
@@ -29,6 +30,9 @@ function Navbar(props) {
       <ul className="menu">
         <li className={props.classHome}>
         <Link to="/"><IoHome style={{fontSize:"20px",margin:"10px 0px",marginRight:"5px"}}></IoHome>Home</Link>
+        </li>
+        <li className={props.classInfo}>
+          <Link to="/info"><AiOutlineInfoCircle style={{fontSize:"20px",margin:"10px 0px",marginRight:"5px"}}></AiOutlineInfoCircle>Info</Link>
         </li>
         <li className={props.classHotline}>
           <Link to="/hotline"><HiOutlinePhone style={{fontSize:"20px",margin:"10px 0px",marginRight:"5px"}}></HiOutlinePhone>Hotline</Link>

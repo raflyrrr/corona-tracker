@@ -43,6 +43,11 @@ body {
   transition: all 0.2s ease;
 }
 
+.footerinfodetail {
+  margin-top: 30%;
+  width: 100%;
+}
+
 
 @media (max-width: 804px) {
   .container {
